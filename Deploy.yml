@@ -1,0 +1,12 @@
+name: DEPLOY
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: rsync deployments
+        run: rsync -avzh rsync://ftp.us.debian.org:/debian ${{github.workspace}}\debian
